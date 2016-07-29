@@ -20,3 +20,12 @@ octave-workspace
 
 #python cache folder
 __pycache__/
+
+###########################
+# System related files
+###########################
+
+# OSX DS_Store file
+.DS_Store
+
+
