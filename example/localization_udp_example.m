@@ -7,7 +7,8 @@
 % beacon ID is 26. This can be configured in dashboard
 clear;
 % connection parameters
-ip = '10.136.73.87';
+ip = '10.136.18.190';
+% ip = '192.168.86.122';
 port = 18888;
 mobileBeaconId = 26;
 
@@ -19,13 +20,13 @@ interval = 0.1;
 % add python scripts folder to path, in the repository, the default
 % location of the python scripts locates at '[project_root]/py_scripts'
 PyPath = py.sys.path;
-if count(PyPath,'../py_scripts') == 0
+if PyPath.count('../py_scripts') == 0
     insert(PyPath,int32(0),'../py_scripts');
 end
-% PyModule = py.sys.modules;
-% if isa(PyModule.get('udpclient'),'py.NoneType')
-%     py.importlib.import_module('udpclient');
-% end
+PyModule = py.sys.modules;
+if isa(PyModule.get('udpclient'),'py.NoneType')
+    py.importlib.import_module('udpclient');
+end
 
 conn = py.udpclient.udp_factory(ip,uint16(port),uint16(mobileBeaconId));
 
